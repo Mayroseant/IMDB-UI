@@ -1,0 +1,65 @@
+<!-- @model MovieMayDL.Models.User
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Signup";
+    <style>
+        body {
+            background-image: url('../images/Signup.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+} -->
+<div class="text-center">
+    <h1 class="text-light">Signup</h1>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="p-4 m-2 border border-light col-6">
+            <form class="form-horizontal" [formGroup]="SignupForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-6 form-group mt-4">
+                        <label class="pull-left control-label text-light fw-bolder">Role</label>
+                        <select class="form-select" formControlName="UserRole">
+                            <option disabled selected>--Select a Role--</option>
+                            <option>Admin</option>
+                            <option>User</option>
+                        </select>
+                        <span class="text-danger pull-left" *ngIf="UserRole && UserRole.invalid && UserRole.touched">Cannot be empty</span>
+                    </div>
+                    <div class="col-md-6 form-group mt-4">
+                        <label class="pull-left control-label text-light fw-bolder">Email</label>
+                        <input class="form-control" type="email" placeholder="Enter email id" formControlName="Email" />
+                        <span class="text-danger pull-left" *ngIf="Email && Email.invalid && Email.touched">Cannot be empty/invalid format</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-group mt-4">
+                        <label class="pull-left control-label text-light fw-bolder">Name</label>
+                        <input class="form-control" type="text" placeholder="Enter name" formControlName="Name" />
+                        <span class="text-danger pull-left" *ngIf="Name && Name.invalid && Name.touched">Cannot be empty</span>
+                    </div>
+                    <div class="col-md-6 form-group mt-4">
+                        <label class="pull-left control-label text-light fw-bolder">Password</label>
+                        <input class="form-control" type="password" placeholder="Enter password" formControlName="Pwd" />
+                        <span class="text-danger pull-left" *ngIf="Pwd && Pwd.invalid && Pwd.touched">Cannot be empty</span>
+                    </div>
+                </div>
+            <div class="form-group text-light fw-bolder mt-4">
+                <input type="submit" class="form-control btn btn-success" value="Signup" [disabled]="SignupForm.invalid"/>
+                Already have an Account? <a routerLink="/" class="text-decoration-none">Login</a>
+            </div>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+<!-- @{
+    if (TempData["msg"] != null)
+    {
+        <script>
+            alert('@TempData["msg"]')
+        </script>
+    }
+} -->

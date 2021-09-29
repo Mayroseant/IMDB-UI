@@ -1,0 +1,59 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 border-bottom" style="background-color:black">
+        <div class="container">
+            <a class="navbar-brand text-light fw-bolder" routerLink="/">MovieMay</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    //Login, Signup
+                    <ul class="navbar-nav flex-grow-1 justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Login" onclick="return showLoader(this)">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Signup" onclick="return showLoader(this)">Signup</a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    //After Login
+                    @if (@User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value == "Admin")
+                    {
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Index" onclick="return showLoader(this)">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="AddMovie" onclick="return showLoader(this)">Add Movie</a>
+                </li>
+            </ul>
+                        <ul class="navbar-nav flex-grow-1 justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Index" onclick="return showLoader(this)">Hello @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Logout" onclick="return showLoader(this)">Logout</a>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav flex-grow-1 justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Index" onclick="return showLoader(this)">Hello @User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Logout" onclick="return showLoader(this)">Logout</a>
+                            </li>
+                        </ul>
+                    }
+                }
+            </div> -->
+        </div>
+    </nav>
+</header>

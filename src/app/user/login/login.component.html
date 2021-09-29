@@ -1,0 +1,34 @@
+<div class="text-center">
+    <h1 class="text-light">Login</h1>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="p-4 m-2 border border-light col-4">
+            <form class="form-horizontal" [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label class="pull-left control-label text-light fw-bolder">Role</label>
+                    <select class="form-select" formControlName="UserRole">
+                        <option disabled selected>--Select a Role--</option>
+                        <option>Admin</option>
+                        <option>User</option>
+                    </select>
+                    <span class="text-danger pull-left" *ngIf="UserRole && UserRole.invalid && UserRole.touched">Cannot be empty</span>
+                </div>
+                <div class="form-group mt-4">
+                    <label class="pull-left control-label text-light fw-bolder">Email</label>
+                    <input class="form-control" type="email" placeholder="Enter email id" formControlName="Email"/>
+                    <span class="text-danger pull-left" *ngIf="Email && Email.invalid && Email.touched">Cannot be empty/invalid format</span>
+                </div>
+                <div class="form-group mt-4">
+                    <label class="pull-left control-label text-light fw-bolder">Password</label>
+                    <input class="form-control text-dark" type="password" placeholder="Enter password" formControlName="Pwd"/>
+                    <span class="text-danger pull-left" *ngIf="Pwd && Pwd.invalid && Pwd.touched">Cannot be empty</span>
+                </div>
+                <div class="form-group text-light fw-bolder mt-4">
+                    <input type="submit" class="form-control btn btn-success" value="Login" [disabled]="LoginForm.invalid"/>
+                    New here? <a routerLink="/Signup" class="text-warning text-decoration-none">Signup</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
