@@ -14,6 +14,8 @@ import { MoviedetailsComponent } from './movie/moviedetails/moviedetails.compone
 import { AddmovieComponent } from './movie/addmovie/addmovie.component';
 
 import { UserServiceService } from './user/services-models/user-service.service';
+import { MovieServiceService } from './movie/services-models/movie-service.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,9 +33,13 @@ import { UserServiceService } from './user/services-models/user-service.service'
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
-  providers: [UserServiceService],
+  providers: [
+    UserServiceService,
+    MovieServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

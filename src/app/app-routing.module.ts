@@ -10,9 +10,10 @@ const routes: Routes = [
   { path: 'Login', component: LoginComponent},
   { path: 'Signup', component: SignupComponent},
   { path: 'AddMovie', component: AddmovieComponent},
-  { path: 'MovieDetails', component: MoviedetailsComponent},
   { path: 'Movies', component: MoviesComponent},
-  { path: '',   redirectTo: '/Login', pathMatch: 'full' }
+  { path: 'MovieDetails/:id', component: MoviedetailsComponent},
+  { path: '',   redirectTo: '/Login', pathMatch: 'full' },
+  { path: '**', component: LoginComponent}
 ];
 
 @NgModule({

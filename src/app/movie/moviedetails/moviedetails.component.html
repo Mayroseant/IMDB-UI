@@ -1,1 +1,55 @@
-<p>moviedetails works!</p>
+<h1 class="text-center text-light">{{ moviedetails.Name }}</h1>
+<div class="card mb-3 p-2">
+    <iframe class="card-img-top mb-3" width="560" height="315" src="{{ moviedetails.Trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ moviedetails.Poster }}" class="img-fluid rounded-start" alt="Movie Poster">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><strong>Movie Name: </strong>{{ moviedetails.Name }}</h5>
+                <p class="card-text"><strong>Description: </strong>{{ moviedetails.About }}</p>
+                <p class="card-text"><strong>Genre: </strong>{{ moviedetails.Genre }}</p>
+                <p class="card-text"><strong>Director: </strong>{{ moviedetails.Director }}</p>
+                <p class="card-text"><strong>Starring: </strong>{{ moviedetails.Starring }}</p>
+                <p class="card-text"><strong>Producer: </strong>{{ moviedetails.Producer }}</p>
+                <p class="card-text"><strong>Watchtime: </strong>{{ moviedetails.Watchtime }}</p>
+                <p class="card-text"><strong>Release Year: </strong>{{ moviedetails.Release }}</p>
+                <p class="card-text">
+                    <strong>Rating: </strong>
+                    <ngb-rating [max]="5" [(rate)]="moviedetails.Rating" [readonly]="true"></ngb-rating>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col">
+            <form class="card-action" data-ajax="true"
+                    data-ajax-method="POST"
+                    data-ajax-mode="replace"
+                    data-ajax-update="#ajaxresult"
+                    [formGroup]="ReviewForm" (ngSubmit)="onSubmit()">
+                <div class="m-5">
+                    <input type="text" placeholder="Say something!" class="w-75 m-1" formControlName="Comment" />
+                    <span class="text-danger pull-left" *ngIf="Comment && Comment.invalid && Comment.touched">Required</span>
+                    <input formControlName="MovieId" type="hidden" value="{{ moviedetails.MId }}" required/>
+                    <input formControlName="Mail" type="hidden" value="" required/>
+                    <button type="submit" class="btn btn-danger" [disabled]="ReviewForm.invalid"><i class="fa fa-send-o"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="height:500px;overflow:scroll;overflow-x:hidden">
+            <div class="row g-0" *ngFor="let comment of moviedetails.Reviews">
+            <hr />
+                <div class="col-lg m-4">
+                    <p class="card-text">
+                        <strong>{{ comment.Mail }}</strong>
+                        <br />
+                        <small class="text-secondary">{{ comment.PostDatetime }}</small>
+                    </p>
+                    <p class="card-text">{{ comment.Comment }}</p>
+                </div>
+            </div>
+    </div>
+</div>

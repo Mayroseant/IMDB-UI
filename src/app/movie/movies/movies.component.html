@@ -1,1 +1,52 @@
-<p>movies works!</p>
+<h1 class="text-center text-light">Movie List</h1>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col-3 mt-3" *ngFor="let movie of movielist">
+        <div class="card h-100 border p-2">
+            <a [routerLink]="[ '/MovieDetails',movie.MId]">
+                <img class="card-img-top" width="200" height="400" src="{{ movie.Poster }}" alt="MoviePoster">
+            </a>
+            <div class="card-body">
+                <a [routerLink]="[ '/MovieDetails',movie.MId]" class="text-decoration-none">
+                    <h5 class="card-title">
+                        <strong>
+                            <i class="fa fa-angle-double-right blink_me mr-2" style="color:red;"></i>{{ movie.Name }}
+                        </strong>
+                    </h5>
+                </a>
+                <p class="card-text">
+                    <ngb-rating [max]="5" [(rate)]="movie.Rating" [readonly]="true"></ngb-rating>
+                </p>
+            </div>
+            <form class="card-action" data-ajax="true"
+                    data-ajax-method="POST"
+                    data-ajax-mode="replace"
+                    data-ajax-update="#ajaxresult"
+                    [formGroup]="ReviewForm" (ngSubmit)="onSubmit()">
+                <div id="ajaxresult">
+                    <ul class="list-group" *ngIf="movie.Reviews?.length > 3; else elseBlock">
+                        <li class="list-group-item" *ngFor="let comment of movie.Reviews.slice(-3);">
+                            <strong>{{ comment.Mail }}</strong>
+                            <br />
+                            <div data-toggle="tooltip" data-placement="top" title="{{ comment.Comment }}" class="textEllips">{{ comment.Comment }}</div>
+                        </li>
+                    </ul>
+                    <ng-template #elseBlock>
+                        <li class="list-group-item" *ngFor="let comment of movie.Reviews">
+                            <strong>{{ comment.Mail }}</strong>
+                            <br />
+                            <div data-toggle="tooltip" data-placement="top" title="{{ comment.Comment }}" class="textEllips">{{ comment.Comment }}</div>
+                        </li>
+                    </ng-template>
+                    
+                </div>
+                <div class="form-inline mt-2">
+                    <input type="text" placeholder="Say something!" class="w-75 m-1" formControlName="Comment" />
+                    <span class="text-danger pull-left" *ngIf="Comment && Comment.invalid && Comment.touched">Required</span>
+                    <input formControlName="MovieId" type="hidden" value="{{ movie.MId }}"/>
+                    <input formControlName="Mail" type="hidden" value="mayrose@gmail.com"/>
+                    <button type="submit" class="btn btn-danger" [disabled]="ReviewForm.invalid"><i class="fa fa-send-o"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
