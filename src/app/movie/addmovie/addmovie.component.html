@@ -1,1 +1,80 @@
-<p>addmovie works!</p>
+<div class="text-center">
+    <h1 class="text-light ml-lg-5">Add A New Movie</h1>
+        <div class="p-4 border border-light">
+            <form class="form-horizontal" [formGroup]="MovieForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="pull-left control-label text-light required fw-bolder">Name</label>
+                        <input formControlName="Name" class="form-control" type="text" placeholder="Enter movie name" />
+                        <span class="text-danger pull-left" *ngIf="Name && Name.invalid && Name.touched">Required</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="pull-left control-label text-light required fw-bolder">About</label>
+                        <input formControlName="About" class="form-control" type="text" placeholder="Enter description" />
+                        <span class="text-danger pull-left" *ngIf="About && About.invalid && About.touched">Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mt-4">
+                        <label class="pull-left control-label text-light required fw-bolder">Genre</label>
+                        <input formControlName="Genre" class="form-control" type="text" placeholder="Enter genre" />
+                        <span class="text-danger pull-left" *ngIf="Genre && Genre.invalid && Genre.touched">Required</span>
+                    </div>
+                    <div class="form-group col-md-6 mt-4">
+                        <label class="pull-left control-label text-light required fw-bolder">Director</label>
+                        <input formControlName="Director" class="form-control" type="text" placeholder="Enter movie director" />
+                        <span class="text-danger pull-left" *ngIf="Director && Director.invalid && Director.touched">Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mt-4">
+                        <label class="pull-left control-label text-light required fw-bolder">Starring</label>
+                        <input formControlName="Starring" class="form-control" type="text" placeholder="Enter movie actors" />
+                        <span class="text-danger pull-left" *ngIf="Starring && Starring.invalid && Starring.touched">Required</span>
+                    </div>
+                    <div class="form-group col-md-6 mt-4">
+                        <label class="pull-left control-label text-light required fw-bolder">Producer</label>
+                        <input formControlName="Producer" class="form-control" type="text" placeholder="Enter movie producer" />
+                        <span class="text-danger pull-left" *ngIf="Producer && Producer.invalid && Producer.touched">Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mt-4">
+                        <label class="pull-left control-label text-light required fw-bolder">Watchtime</label>
+                        <input formControlName="Watchtime" class="form-control" type="text" placeholder="Enter movie watchtime" />
+                        <span class="text-danger pull-left" *ngIf="Watchtime && Watchtime.invalid && Watchtime.touched">Required</span>
+                    </div>
+                    <div class="form-group col-md-6 mt-4">
+                        <label class="pull-left control-label text-light required fw-bolder">Release</label>
+                        <input formControlName="Release" class="form-control" type="text" placeholder="Enter movie release year" />
+                        <span class="text-danger pull-left" *ngIf="Release && Release.invalid && Release.touched">Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mt-4">
+                        <label class="pull-left control-label text-light required fw-bolder">Banner URL</label>
+                        <input formControlName="Poster" class="form-control" type="text" placeholder="Enter movie poster URL" />
+                        <span class="text-danger pull-left" *ngIf="Poster && Poster.invalid && Poster.touched">Required</span>
+                    </div>
+                    <div class="form-group col-md-6 mt-4">
+                        <label class="pull-left control-label text-light required fw-bolder">Trailer URL</label>
+                        <input formControlName="Trailer" class="form-control" type="text" placeholder="Enter movie trailer embed URL"/>
+                        <span class="text-danger pull-left" *ngIf="Trailer && Trailer.invalid && Trailer.touched">Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12 mt-4">
+                        <label class="control-label text-light required fw-bolder">Rating</label><br />
+                        <ngb-rating [max]="5" [readonly]="false" formControlName="Rating"></ngb-rating>
+                        <span class="text-danger pull-left" *ngIf="Rating && Rating.invalid && Rating.touched">Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                            <a routerLink="/Movies" class="btn btn-info m-2" value="Back">Back</a>
+                            <input type="submit" class=" btn btn-success" value="Create" [disabled]="MovieForm.invalid"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>

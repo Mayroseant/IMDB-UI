@@ -1,0 +1,9 @@
+ngb-rating {
+  color: green;
+  font-size: 30px;
+  display: inline-block;
+}
+.card:hover {
+  border-color: deepskyblue;
+  box-shadow: 0px 0px 10px 2px deepskyblue;
+}
